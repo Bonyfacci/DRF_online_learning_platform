@@ -1,3 +1,4 @@
+from django.db.models import Count
 from rest_framework import viewsets
 
 from app_school.models import Course

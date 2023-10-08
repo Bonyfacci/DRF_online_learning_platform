@@ -1,0 +1,166 @@
+[
+  {
+    "model": "app_school.course",
+    "pk": 3,
+    "fields": {
+      "title": "Java-разработчик",
+      "photo": "",
+      "description": "Язык программирования. Backend"
+    }
+  },
+  {
+    "model": "app_school.course",
+    "pk": 4,
+    "fields": {
+      "title": "Python-разработчик",
+      "photo": "",
+      "description": "Язык программирования"
+    }
+  },
+  {
+    "model": "app_school.course",
+    "pk": 5,
+    "fields": {
+      "title": "Web-разработчик",
+      "photo": "",
+      "description": "HTML, CSS, Java-Script"
+    }
+  },
+  {
+    "model": "app_school.lesson",
+    "pk": 3,
+    "fields": {
+      "title": "Базовые знания",
+      "description": "Что такое программирование",
+      "photo": "",
+      "link": null,
+      "course": 4
+    }
+  },
+  {
+    "model": "app_school.lesson",
+    "pk": 4,
+    "fields": {
+      "title": "ООП",
+      "description": "Классы методы/функции",
+      "photo": "",
+      "link": null,
+      "course": 4
+    }
+  },
+  {
+    "model": "app_school.lesson",
+    "pk": 5,
+    "fields": {
+      "title": "Базы данных",
+      "description": "SQL, PostgreSQL, MySQL",
+      "photo": "",
+      "link": null,
+      "course": 4
+    }
+  },
+  {
+    "model": "app_school.lesson",
+    "pk": 6,
+    "fields": {
+      "title": "Django",
+      "description": "Библиотека для Web-разратобки",
+      "photo": "",
+      "link": null,
+      "course": 4
+    }
+  },
+  {
+    "model": "app_school.lesson",
+    "pk": 7,
+    "fields": {
+      "title": "HTML",
+      "description": "Web-разметка",
+      "photo": "",
+      "link": null,
+      "course": 5
+    }
+  },
+  {
+    "model": "app_school.lesson",
+    "pk": 8,
+    "fields": {
+      "title": "CSS",
+      "description": "Web-стили",
+      "photo": "",
+      "link": null,
+      "course": 5
+    }
+  },
+  {
+    "model": "app_school.lesson",
+    "pk": 9,
+    "fields": {
+      "title": "Java-Script",
+      "description": "Web-функции",
+      "photo": "",
+      "link": null,
+      "course": 5
+    }
+  },
+  {
+    "model": "app_school.payments",
+    "pk": 1,
+    "fields": {
+      "user": 2,
+      "date_of_payment": "2023-10-08T14:32:02.566Z",
+      "paid_course": 5,
+      "paid_lesson": null,
+      "payment_amount": 15000,
+      "payment_method": "cash"
+    }
+  },
+  {
+    "model": "app_school.payments",
+    "pk": 2,
+    "fields": {
+      "user": 3,
+      "date_of_payment": "2023-10-08T14:32:20.124Z",
+      "paid_course": 4,
+      "paid_lesson": null,
+      "payment_amount": 20000,
+      "payment_method": "transfer"
+    }
+  },
+  {
+    "model": "app_school.payments",
+    "pk": 3,
+    "fields": {
+      "user": 4,
+      "date_of_payment": "2023-10-08T14:32:40.339Z",
+      "paid_course": 3,
+      "paid_lesson": null,
+      "payment_amount": 25000,
+      "payment_method": "transfer"
+    }
+  },
+  {
+    "model": "app_school.payments",
+    "pk": 4,
+    "fields": {
+      "user": 5,
+      "date_of_payment": "2023-10-08T14:35:40.304Z",
+      "paid_course": null,
+      "paid_lesson": 4,
+      "payment_amount": 5000,
+      "payment_method": "cash"
+    }
+  },
+  {
+    "model": "app_school.payments",
+    "pk": 5,
+    "fields": {
+      "user": 6,
+      "date_of_payment": "2023-10-08T14:35:58.524Z",
+      "paid_course": null,
+      "paid_lesson": 6,
+      "payment_amount": 10000,
+      "payment_method": "cash"
+    }
+  }
+]
