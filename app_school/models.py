@@ -1,5 +1,6 @@
 from django.db import models
 
+from users.models import User
 
 NULLABLE = {'null': True, 'blank': True}
 
@@ -15,6 +16,7 @@ class Course(models.Model):
     class Meta:
         verbose_name = 'Курс'
         verbose_name_plural = 'Курсы'
+        ordering = ('title',)
 
 
 class Lesson(models.Model):
@@ -23,7 +25,8 @@ class Lesson(models.Model):
     photo = models.ImageField(upload_to='course/', **NULLABLE, verbose_name='Превью')
     link = models.TextField(**NULLABLE, verbose_name='Ссылка на видео')
 
-    course = models.ForeignKey(Course, on_delete=models.SET_NULL, **NULLABLE, verbose_name='Курс')
+    course = models.ForeignKey(Course, on_delete=models.SET_NULL, **NULLABLE, verbose_name='Курс',
+                               related_name='lessons')
 
     def __str__(self):
         return f'{self.title}'
@@ -31,3 +34,30 @@ class Lesson(models.Model):
     class Meta:
         verbose_name = 'Урок'
         verbose_name_plural = 'Уроки'
+        ordering = ('title',)
+
+
+class Payments(models.Model):
+    PAY_CHOICES = (
+        ('cash', 'Cash'),
+        ('transfer', 'Transfer'),
+    )
+
+    user = models.ForeignKey(User, on_delete=models.CASCADE, verbose_name='Пользователь', related_name='user')
+    date_of_payment = models.DateTimeField(auto_now_add=True, **NULLABLE, verbose_name='Дата оплаты')
+    paid_course = models.ForeignKey(Course, on_delete=models.CASCADE, **NULLABLE, verbose_name='Курс',
+                                    related_name='course')
+    paid_lesson = models.ForeignKey(Lesson, on_delete=models.CASCADE, **NULLABLE, verbose_name='Урок',
+                                    related_name='lesson')
+    payment_amount = models.PositiveIntegerField(verbose_name='Сумма оплаты')
+    payment_method = models.CharField(max_length=50, choices=PAY_CHOICES, verbose_name='Способ оплаты')
+
+    def __str__(self):
+        return f'{self.user} ' \
+               f'купил {self.paid_course if self.paid_course else self.paid_lesson} ' \
+               f'за {self.payment_amount}'
+
+    class Meta:
+        verbose_name = 'Платеж'
+        verbose_name_plural = 'Платежи'
+        ordering = ('pk',)
