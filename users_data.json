@@ -1,0 +1,122 @@
+[
+  {
+    "model": "users.user",
+    "pk": 1,
+    "fields": {
+      "password": "pbkdf2_sha256$600000$kUL6Wb9IYalPqgWeMa9Qx6$kveIEvkWc8C17pKws2ncKNVbrAWAdPNrdJhec6LSN7s=",
+      "last_login": "2023-10-08T14:20:57.753Z",
+      "is_superuser": true,
+      "first_name": "admin",
+      "last_name": "admin",
+      "is_staff": true,
+      "is_active": true,
+      "date_joined": "2023-10-08T14:20:47.273Z",
+      "email": "admin@sky.pro",
+      "phone": null,
+      "city": null,
+      "avatar": "",
+      "groups": [],
+      "user_permissions": []
+    }
+  },
+  {
+    "model": "users.user",
+    "pk": 2,
+    "fields": {
+      "password": "qwert54321",
+      "last_login": null,
+      "is_superuser": false,
+      "first_name": "",
+      "last_name": "",
+      "is_staff": false,
+      "is_active": true,
+      "date_joined": "2023-10-08T14:21:44Z",
+      "email": "first@sky.pro",
+      "phone": null,
+      "city": "first",
+      "avatar": "",
+      "groups": [],
+      "user_permissions": []
+    }
+  },
+  {
+    "model": "users.user",
+    "pk": 3,
+    "fields": {
+      "password": "qwert54321",
+      "last_login": null,
+      "is_superuser": false,
+      "first_name": "",
+      "last_name": "",
+      "is_staff": false,
+      "is_active": true,
+      "date_joined": "2023-10-08T14:22:27Z",
+      "email": "second@sky.pro",
+      "phone": null,
+      "city": "second",
+      "avatar": "",
+      "groups": [],
+      "user_permissions": []
+    }
+  },
+  {
+    "model": "users.user",
+    "pk": 4,
+    "fields": {
+      "password": "qwert54321",
+      "last_login": null,
+      "is_superuser": false,
+      "first_name": "",
+      "last_name": "",
+      "is_staff": false,
+      "is_active": true,
+      "date_joined": "2023-10-08T14:23:12Z",
+      "email": "third@sky.pro",
+      "phone": null,
+      "city": "third",
+      "avatar": "",
+      "groups": [],
+      "user_permissions": []
+    }
+  },
+  {
+    "model": "users.user",
+    "pk": 5,
+    "fields": {
+      "password": "qwert54321",
+      "last_login": null,
+      "is_superuser": false,
+      "first_name": "",
+      "last_name": "",
+      "is_staff": false,
+      "is_active": true,
+      "date_joined": "2023-10-08T14:23:32Z",
+      "email": "fourth@sky.pro",
+      "phone": null,
+      "city": "fourth",
+      "avatar": "",
+      "groups": [],
+      "user_permissions": []
+    }
+  },
+  {
+    "model": "users.user",
+    "pk": 6,
+    "fields": {
+      "password": "qwert54321",
+      "last_login": null,
+      "is_superuser": false,
+      "first_name": "",
+      "last_name": "",
+      "is_staff": false,
+      "is_active": true,
+      "date_joined": "2023-10-08T14:24:09Z",
+      "email": "fifth@sky.pro",
+      "phone": null,
+      "city": "fifth",
+      "avatar": "",
+      "groups": [],
+      "user_permissions": []
+    }
+  }
+]
