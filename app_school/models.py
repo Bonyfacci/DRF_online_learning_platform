@@ -1,3 +1,4 @@
+from django.conf import settings
 from django.db import models
 
 from users.models import User
@@ -9,6 +10,8 @@ class Course(models.Model):
     title = models.CharField(max_length=200, verbose_name='Название курса')
     photo = models.ImageField(upload_to='course/', **NULLABLE, verbose_name='Превью')
     description = models.TextField(**NULLABLE, verbose_name='Описание')
+
+    owner = models.ForeignKey(settings.AUTH_USER_MODEL, on_delete=models.CASCADE, **NULLABLE, verbose_name='Владелец')
 
     def __str__(self):
         return f'{self.title}'
@@ -28,6 +31,8 @@ class Lesson(models.Model):
     course = models.ForeignKey(Course, on_delete=models.SET_NULL, **NULLABLE, verbose_name='Курс',
                                related_name='lessons')
 
+    owner = models.ForeignKey(settings.AUTH_USER_MODEL, on_delete=models.CASCADE, **NULLABLE, verbose_name='Владелец')
+
     def __str__(self):
         return f'{self.title}'
 
@@ -45,10 +50,12 @@ class Payments(models.Model):
 
     user = models.ForeignKey(User, on_delete=models.CASCADE, verbose_name='Пользователь', related_name='user')
     date_of_payment = models.DateTimeField(auto_now_add=True, **NULLABLE, verbose_name='Дата оплаты')
+
     paid_course = models.ForeignKey(Course, on_delete=models.CASCADE, **NULLABLE, verbose_name='Курс',
                                     related_name='course')
     paid_lesson = models.ForeignKey(Lesson, on_delete=models.CASCADE, **NULLABLE, verbose_name='Урок',
                                     related_name='lesson')
+
     payment_amount = models.PositiveIntegerField(verbose_name='Сумма оплаты')
     payment_method = models.CharField(max_length=50, choices=PAY_CHOICES, verbose_name='Способ оплаты')
 
