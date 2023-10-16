@@ -5,7 +5,11 @@ class IsModerator(BasePermission):
     message = 'Вы не являетесь модератором!'
 
     def has_permission(self, request, view):
-        return request.user.groups.filter(is_staff=True).exists()
+        if request.user.is_staff:
+            return True
+        else:
+            return False
+        # return request.user.groups.filter(is_staff=True).exists()
 
 
 class IsOwner(BasePermission):
