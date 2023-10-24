@@ -1,5 +1,7 @@
 import stripe
+from app_school.tasks import send_mail_about_update
 
+from app_school.models import Course, Subscription
 from config.settings import STRIPE_SECRET_KEY
 
 
@@ -30,3 +32,10 @@ def create_a_payment_intent(object):
     )
 
     return pay_link['url']
+
+
+def check_subscription(course: Course) -> None:
+    subscriptions = Subscription.objects.filter(course=course)
+    if subscriptions:
+        for subscription in subscriptions:
+            send_mail_about_update.delay(subscription.user.email, subscription.course.title)
