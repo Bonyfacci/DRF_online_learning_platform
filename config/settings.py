@@ -10,6 +10,7 @@ For the full list of settings and their values, see
 https://docs.djangoproject.com/en/4.2/ref/settings/
 """
 import os
+from datetime import timedelta
 from pathlib import Path
 
 from dotenv import load_dotenv
@@ -42,15 +43,24 @@ INSTALLED_APPS = [
     'django.contrib.messages',
     'django.contrib.staticfiles',
 
+    # для шрифтов json-файлов
     'django_dump_load_utf8',
 
+    # Django Rest Framework
     'rest_framework',
     'django_filters',
 
+    # Авторизация с использованием JSON Web Token
     'rest_framework_simplejwt',
 
+    # Документация
     'drf_yasg',
 
+    # Распределенная система обработки задач в фоновом режиме
+    'django_celery_beat',
+    'redis',
+
+    # Приложения
     'app_school',
     'users'
 ]
@@ -156,3 +166,25 @@ REST_FRAMEWORK = {
 }
 
 STRIPE_SECRET_KEY = os.getenv('STRIPE_SECRET_KEY')
+
+
+# URL-адрес брокера сообщений
+CELERY_BROKER_URL = 'redis://localhost:6379'
+
+# URL-адрес брокера результатов
+CELERY_RESULT_BACKEND = 'redis://localhost:6379'
+
+# Настройки для выполнения периодических задача
+CELERY_BEAT_SCHEDULE = {
+    'task-name': {
+        'task': 'users.tasks.check_active_user',
+        'schedule': timedelta(days=1),
+    },
+}
+
+# Настройки для подключения сервиса отправки электронной почты
+EMAIL_HOST = 'smtp.yandex.ru'
+EMAIL_PORT = 465
+EMAIL_HOST_USER = os.getenv('EMAIL_HOST_USER')
+EMAIL_HOST_PASSWORD = os.getenv('EMAIL_HOST_PASSWORD')
+EMAIL_USE_SSL = True

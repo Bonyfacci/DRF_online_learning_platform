@@ -6,7 +6,8 @@ from rest_framework.routers import DefaultRouter
 from app_school.views.cource import CourseViewSet
 from app_school.views.lesson import LessonCreateAPIView, LessonListAPIView, LessonDetailAPIView, LessonUpdateAPIView, \
     LessonDeleteAPIView
-from app_school.views.payments import PaymentsListAPIView
+from app_school.views.payments import PaymentsListAPIView, PaymentCreateAPIView, PaymentRetrieveAPIView, \
+    PaymentSuccessAPIView
 from app_school.views.subscription import SubscriptionListAPIView, SubscriptionCreateAPIView, SubscriptionUpdateAPIView, \
     SubscriptionDestroyAPIView
 
@@ -24,6 +25,9 @@ urlpatterns = [
 
     # payments
     path('payments/', PaymentsListAPIView.as_view(), name='payments'),
+    path('payments/create/', PaymentCreateAPIView.as_view(), name='payments_create'),
+    path('payments/<int:pk>/', PaymentRetrieveAPIView.as_view(), name='payments_detail'),
+    path('payments/success/', PaymentSuccessAPIView.as_view(), name='payments_success'),
 
     # subscriptions
     path('subscriptions/', SubscriptionListAPIView.as_view(), name='subscription_list'),
