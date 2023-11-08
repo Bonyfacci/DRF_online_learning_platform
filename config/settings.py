@@ -104,11 +104,10 @@ DATABASES = {
         # 'ENGINE': 'django.db.backends.sqlite3',
         # 'NAME': BASE_DIR / 'db.sqlite3',
         'ENGINE': 'django.db.backends.postgresql',
-        'NAME': os.getenv('DATABASE_NAME'),
-        'USER': os.getenv('DATABASE_USER'),
-        'PASSWORD': os.getenv('DATABASE_PASSWORD'),
-        'HOST': os.getenv('DATABASE_HOST'),
-        'PORT': os.getenv('DATA_PORT'),
+        'NAME': 'school',
+        'USER': 'postgres',
+        'PASSWORD': 'mysecretpassword',
+        'HOST': 'db',
     }
 }
 
@@ -169,10 +168,10 @@ STRIPE_SECRET_KEY = os.getenv('STRIPE_SECRET_KEY')
 
 
 # URL-адрес брокера сообщений
-CELERY_BROKER_URL = 'redis://localhost:6379'
+CELERY_BROKER_URL = 'redis://redis:6379/0'
 
 # URL-адрес брокера результатов
-CELERY_RESULT_BACKEND = 'redis://localhost:6379'
+CELERY_RESULT_BACKEND = 'redis://redis:6379/0'
 
 # Настройки для выполнения периодических задача
 CELERY_BEAT_SCHEDULE = {
